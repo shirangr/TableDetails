@@ -1,0 +1,52 @@
+body {
+    background-color: lightblue;
+}
+
+table,th,tr,td{
+	border: 1px solid black;
+	text-align:center;
+}
+
+form{
+	/* border: 1px solid black; */
+}
+
+.btnRead {
+    background-color: lighter;
+    border: gray;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+	border-radius: 8px;
+}
+
+.btnUpdate {
+    background-color: green;
+    border: gray;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+	border-radius: 8px;
+}
+
+.btnDelete {
+    background-color: red;
+    border: gray;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+	border-radius: 8px;
+}
+
+#Details{
+	margin:30px;
+}

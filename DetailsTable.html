@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Page Title</title>
+<!-- <link rel="stylesheet" type="text/css" href="DetailsTable.css"/> -->
+<style>
+body {
+    background-color: lightblue;
+}
+
+table,th,tr,td{
+	border: 1px solid black;
+	text-align:center;
+}
+
+form{
+	/* border: 1px solid black; */
+}
+
+.btnRead {
+    background-color: lighter;
+    border: gray;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+	border-radius: 8px;
+}
+
+.btnUpdate {
+    background-color: green;
+    border: gray;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+	border-radius: 8px;
+}
+
+.btnDelete {
+    background-color: red;
+    border: gray;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+	border-radius: 8px;
+}
+
+#Details{
+	margin:30px;
+}
+</style>
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+	
+});
+
+function validateForm() {
+	var name = $("[name='name']").val();
+	var email = $("[name='email']").val();
+	var address = $("[name='address']").val();
+	var phone = $("[name='phone']").val();
+	
+    if (name == null || name == "") {
+        alert("name must be filled out");
+        return false;
+    }
+	if (email == null || email == "") {
+        alert("email must be filled out");
+        return false;
+    }
+	if (address == null || address == "") {
+        alert("address must be filled out");
+        return false;
+    }
+	if (phone == null || phone == "") {
+        alert("phone must be filled out");
+        return false;
+    }
+	else{
+		addData(name,email,address,phone);
+	}
+};
+
+function addData(n,e,a,p){
+	<!-- console.log("addData"); -->
+	$("tr:last-child").clone().appendTo("table");
+	var clone= $("tr:last-child");
+    clone.find('td').eq(0).text(n);
+	clone.find('td').eq(1).text(e);
+	clone.find('td').eq(2).text(a);
+	clone.find('td').eq(3).text(p);
+};
+
+function ReadData(e){
+		<!-- console.log("ReadData"); -->
+		$('#Details').html("<h3>"+"Details: "+"</h3>");
+		$(e).closest("tr").find("td").each(function( index ) {
+		if(index<4)
+		{
+			var $item = $("tr").eq(0).find('th').eq(index).text()+ ":"+$(this).text();
+			$("#Details").append($item+"<br/>");	
+		}
+		});	
+};
+
+
+function UpdateData(e){
+	<!-- still haven't decided what to do here... -->
+	console.log("UpdateData");
+	
+};
+
+function DeleteData(e){
+	<!-- console.log("DeleteData"); -->
+	$(e).closest("tr").detach();
+};
+
+function clearForm(){
+	<!-- console.log("clearForm"); -->
+	console.log($(this).closest('#myForm').find("input[type=text]").val(""));
+	$('#myForm').find("input[type=text]").val("");
+};
+</script>
+</head>
+<body>
+  
+<table id="myTable">
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Address</th>
+<th>Phone</th>
+<th>Action</th>
+</tr>
+<tr>
+<td>Lisa</td>
+<td>lis@gmail.com</td>
+<td>Melbourne, Australia</td>
+<td>050-0000000</td>
+<td>
+<button type="button" class="btnRead" name="action" value="Read" onclick="ReadData(this)">Read</button>
+	<button type="button" class="btnUpdate" name="action" value="Update" onclick="UpdateData(this)">Update</button>
+	<button type="button" class="btnDelete" name="action" value="delete" onclick="DeleteData(this)">Delete</button>
+</td>
+</tr>
+<tr>
+<td>Brandon</td>
+<td>b86@gmail.com</td>
+<td>New Orleans, USA</td>
+<td>050-0000001</td>
+<td>
+<button type="button" class="btnRead" name="action" value="read" onclick="ReadData(this)">Read</button>
+	<button type="button" class="btnUpdate" name="action" value="update" onclick="UpdateData(this)">Update</button>
+	<button type="button" class="btnDelete" name="action" value="delete" onclick="DeleteData(this)">Delete</button>
+</td>
+</tr>
+	
+</table>  
+  
+<form id="myForm" name="myForm">
+  Name:<br>
+  <input type="text" name="name"><br>
+  Email:<br>
+  <input type="text" name="email"><br>
+  Address:<br>
+  <input type="text" name="address"><br>
+  Phone:<br>
+  <input type="text" name="phone"><br><br>
+  <button type="button" name="action" value="submit" onclick="validateForm()">Submit</button>
+  <button type="button" name="action" value="clear" onclick="clearForm()">Clear</button>
+</form>
+
+<div id="Details">
+</div>
+<!-- <script type="text/javascript" src="DetailsTable.js"/> -->
+</body>
+</html>
+
+
+
+
+
